@@ -5,10 +5,10 @@ const Twitter = require('twitter');
 (async function(){
     // connect to Twitter API
     const client = new Twitter({
-    consumer_key: 'dVDb35K9SeMVqcBfs2DNUb3pD',
-    consumer_secret: 'SV7DspfuPEUZInaPQWin9QLdoDirHVYq7KQVxALOgZzZvPsFUt',
-    access_token_key: '1344581132608745473-R4i6vjQqtBHmQz1swfwE7pR2mmgQo9',
-    access_token_secret: 'KMnWbMfimYrrOs5SGW72YPWJbY8Jqtq0pTGf7pqoZRsfw'
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
     });
 
     // get quotes from Google Spread Sheet
@@ -21,7 +21,7 @@ const Twitter = require('twitter');
     client.post('statuses/update', {status},  function(error, tweet, response) {
     if(error) throw error;
     console.log(tweet);  // Tweet body.
-    console.log(response);  // Raw response object.
+    // console.log(response);  // Raw response object.
     });
 
     // remove quote from Sheet
